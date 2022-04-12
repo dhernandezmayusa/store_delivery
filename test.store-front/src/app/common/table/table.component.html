@@ -1,0 +1,55 @@
+<div class="container-fluid ">
+    <div class="row col-1 py-4">
+        <select class="form-select  " aria-label="Default select example" (change)="handlePageSizeChange($event)">
+            <option *ngFor="let size of pageSizes" [ngValue]="size">
+                {{ size }}
+            </option>
+        </select>
+    </div>
+    <div class="table-responsive-sm" style="overflow: auto;">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th *ngFor="let head of listHeader"> 
+                        {{ head | uppercase }}
+                    </th>
+                    <th *ngIf="columoption">
+                        OPCIONES
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let rows of listRows | paginate:{itemsPerPage:CantPorPage , currentPage:PageActual}">
+                    <div *ngIf="icons?.length > 0">
+                        <div *ngFor="let item of rows.slice(0,1)">
+                            <div *ngFor="let icon of icons">
+                                <div *ngIf="icon.ID===item">
+                                    <td>
+                                        <i class="px-1 fas fa-lg"
+                                            [ngClass]="{'fa-times text-danger': icon.ICONO === 'Inactivo','fa-check c-green': icon.ICONO === 'Activo' }">
+                                        </i>
+                                    </td>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <td *ngFor="let row of rows">
+                               {{row }}
+                    </td>
+                    <td>
+                        <div class="d-flex justify-content-start align-items-center">
+                            <i *ngFor="let btn of buttos" (click)="getIdRow(rows, btn)" class="px-1 fas fa-lg"
+                                [ngClass]="{'far fa-eye c-green':btn ===btns.view ,'fa-pencil-alt c-green': btn === btns.edit, 'fa-trash-alt c-red' : btn === btns.delete, 'fa-check c-blue' : btn === 'ACTIVE', 'fa-times text-danger' : btn === 'INACTIVE' }">
+                            </i>
+                            <div style="margin:0.1em;" *ngFor="let btn of listButtons" (click)="getIdRow(rows, btn.btn)">
+                               <input type="button" class="btn btn-sm btn-success"  value="{{btn.name}}" >
+                            </div>
+                        </div>
+                    </td>
+            </tbody>
+        </table>
+    </div>
+    <div class="d-flex justify-content-between py-3"><a>Total Registros Encontrados : {{total}}</a>
+        <pagination-controls (pageChange)="PageActual=$event"></pagination-controls>
+    </div>
+</div>

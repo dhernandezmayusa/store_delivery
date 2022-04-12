@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "Test.Store.BL/1.0.0": {
+        "dependencies": {
+          "Test.Store.Entities": "1.0.0"
+        },
+        "runtime": {
+          "Test.Store.BL.dll": {}
+        }
+      },
+      "Test.Store.Entities/1.0.0": {
+        "runtime": {
+          "Test.Store.Entities.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Test.Store.BL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Test.Store.Entities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

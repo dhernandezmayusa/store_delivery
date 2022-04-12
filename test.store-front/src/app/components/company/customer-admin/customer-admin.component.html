@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="px-3 py-5">
+        <h4 class="modal-title" id="modal_company_Label">CUSTOMERS</h4>
+        <div class="row">
+            <div class="d-flex justify-content-end">
+                <div class="col-sm-3 col-lg-3 px-3">
+                    <input type="text" minlength="2" maxlength="80" placeholder="Find" [ngModel]="buscar"
+                        (ngModelChange)="findcharacters($event)" class="form-control" (keypress)="characters($event, 1)"
+                        oninput="this.value = this.value.toUpperCase()">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="py-1"></div>
+        <div [hidden]='hiddeDatatable'>
+            <app-table [data]="listDatatable" [buttos]='listButtons' (idRow)='getId($event)'></app-table>
+        </div>
+        <div [hidden]='hiddeSpinner' class="w-100 text-center">
+            <div class="py-5"></div>
+            <div class="spinner-border text-success" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-orders-view [data]="listOrders" ></app-orders-view>
+<app-orders-new  [idRegister]=IdEdit></app-orders-new>

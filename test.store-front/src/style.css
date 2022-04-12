@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Text:wght@700&family=Heebo:wght@300;400;500;600;700;800;900&family=Jost:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+@import '~ngx-toastr/toastr';
+@import '~@swimlane/ngx-datatable/index.css';
+@import '~@swimlane/ngx-datatable/assets/icons.css';
+/*-- Common Style --*/
+@media only screen and (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+
+.row {
+  margin-right: calc(var(--bs-gutter-x) * -.6);
+  margin-left: calc(var(--bs-gutter-x) * -.6);
+}
+
+.row > * {
+  padding-right: calc(var(--bs-gutter-x) * .6);
+  padding-left: calc(var(--bs-gutter-x) * .6);
+}
+
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+  padding-right: var(--bs-gutter-x, 0.9rem);
+  padding-left: var(--bs-gutter-x, 0.9rem);
+}

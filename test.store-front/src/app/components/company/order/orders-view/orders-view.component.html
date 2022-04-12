@@ -1,0 +1,35 @@
+<button type="button" id="Newmodal" class="btn btn-success" data-bs-toggle="modal"
+  data-bs-target="#modal_orders_view" title="Editar" style="display: none;">Editar
+</button>
+
+
+<div class="modal fade modal_orders_view-lg" id="modal_orders_view" tabindex="-1" aria-labelledby="modal_orders_Label"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header justify-content-left">
+                <h4 class="modal-title" id="modal_orders_Label">Orders</h4>
+                <button id="btnClose1" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="clearControlReset()"></button>
+            </div>
+            <div class="modal-body" style="padding:15px 15px;">
+                <div class="px-3 py-5">
+            
+                    <div class="py-1"></div>
+                    <div [hidden]='hiddeDatatable'>
+                        <app-table [data]="listDatatableOrders" [buttos]='listButtons' ></app-table>
+                    </div>
+                    <div [hidden]='hiddeSpinner' class="w-100 text-center">
+                        <div class="py-5"></div>
+                        <div class="spinner-border text-success" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end">
+                <button type="button" id="btnClose1"  data-bs-dismiss="modal" aria-label="Close"class="btn btn-danger"  (click)="clearControlReset()" style="margin:3%;"> CLOSE </button>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

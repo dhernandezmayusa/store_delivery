@@ -1,0 +1,223 @@
+<button type="button" id="Editmodal" class="btn btn-success" data-bs-toggle="modal"
+  data-bs-target="#modal_order_create" title="Editar" style="display: none;">Editar
+</button>
+
+
+<div class="modal fade modal_order_create-lg" id="modal_order_create" tabindex="-1" aria-labelledby="modal_company_Label"
+    aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header justify-content-left">
+                <h3 class="modal-title" id="modal_company_Label">NEW ORDER</h3>
+                <button id="btnClose2" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="clearControlReset()"></button>
+            </div>
+            <div class="modal-body" style="padding:15px 15px;">
+                <h4 class="modal-title" id="modal_company_Label">Order</h4>
+                <form class="row g-2 needs-validation text-center" [formGroup]="formOrder"
+                    (ngSubmit)="onContinue($event)">
+                    <div class="col-md-12 col-lg-6 py-1">
+                        <select formControlName="ID_EMPLOYEE" class="form-select" required>
+                            <option selected disabled value="">EMPLOYEE</option>
+                            <option *ngFor="let item of listEmployee" value="{{item.Empid}}">
+                                {{item.FullName}}
+                            </option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Select Employee
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-6 py-1">
+                        <select formControlName="ID_SHIPPER" class="form-select" required>
+                            <option selected disabled value="">SHIPPER</option>
+                            <option *ngFor="let item of listShipper" value="{{item.shipperid}}">
+                                {{item.companyname}}
+                            </option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Select Shipper
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12 py-1">
+                        <input type="text" formControlName='SHIP_NAME' placeholder="ship name" minlength="2"
+                            maxlength="50" class="form-control" required (keypress)="characters($event, 2)"
+                            oninput="this.value = this.value.toUpperCase()"
+                            [class.is-invalid]='g.SHIP_NAME.errors && g.SHIP_NAME.touched && g.SHIP_NAME.invalid'>
+                        <div class="invalid-feedback" *ngIf='g.SHIP_NAME.errors && g.SHIP_NAME.touched'>
+                            <div *ngIf="g.SHIP_NAME.hasError('required')">
+                               Add ship name
+                            </div>
+                            <div *ngIf="g.SHIP_NAME.hasError('minlength')">
+                                Min 2 characters
+                            </div>
+                            <div *ngIf="g.SHIP_NAME.hasError('maxlength')">
+                                Max 50 characters
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-4 py-1">
+                        <input type="text" formControlName='SHIP_ADDRESS' placeholder="ship Address" minlength="2"
+                            maxlength="50" class="form-control" required (keypress)="characters($event, 2)"
+                            oninput="this.value = this.value.toUpperCase()"
+                            [class.is-invalid]='g.SHIP_ADDRESS.errors && g.SHIP_ADDRESS.touched && g.SHIP_ADDRESS.invalid'>
+                        <div class="invalid-feedback" *ngIf='g.SHIP_ADDRESS.errors && g.SHIP_ADDRESS.touched'>
+                            <div *ngIf="g.SHIP_ADDRESS.hasError('required')">
+                               Add ship address
+                            </div>
+                            <div *ngIf="g.SHIP_ADDRESS.hasError('minlength')">
+                                Min 2 characters
+                            </div>
+                            <div *ngIf="g.SHIP_ADDRESS.hasError('maxlength')">
+                                Max 50 characters
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-4 py-1">
+                        <input type="text" formControlName='SHIP_CITY' placeholder="ship city" minlength="2"
+                            maxlength="50" class="form-control" required (keypress)="characters($event, 2)"
+                            oninput="this.value = this.value.toUpperCase()"
+                            [class.is-invalid]='g.SHIP_CITY.errors && g.SHIP_CITY.touched && g.SHIP_CITY.invalid'>
+                        <div class="invalid-feedback" *ngIf='g.SHIP_CITY.errors && g.SHIP_CITY.touched'>
+                            <div *ngIf="g.SHIP_CITY.hasError('required')">
+                               Add ship city
+                            </div>
+                            <div *ngIf="g.SHIP_CITY.hasError('minlength')">
+                                Min 2 characters
+                            </div>
+                            <div *ngIf="g.SHIP_CITY.hasError('maxlength')">
+                                Max 50 characters
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-4 py-1">
+                        <input type="text" formControlName='SHIP_COUNTRY' placeholder="ship country" minlength="2"
+                            maxlength="50" class="form-control" required (keypress)="characters($event, 2)"
+                            oninput="this.value = this.value.toUpperCase()"
+                            [class.is-invalid]='g.SHIP_COUNTRY.errors && g.SHIP_COUNTRY.touched && g.SHIP_COUNTRY.invalid'>
+                        <div class="invalid-feedback" *ngIf='g.SHIP_COUNTRY.errors && g.SHIP_COUNTRY.touched'>
+                            <div *ngIf="g.SHIP_COUNTRY.hasError('required')">
+                               Add ship country
+                            </div>
+                            <div *ngIf="g.SHIP_COUNTRY.hasError('minlength')">
+                                Min 2 characters
+                            </div>
+                            <div *ngIf="g.SHIP_COUNTRY.hasError('maxlength')">
+                                Max 50 characters
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-4 py-1">
+                        <input type="date" 
+                         formControlName="ORDER_DATE"  min="{{ dayToday | date: 'yyyy-MM-dd' }}"
+                         class="form-control text-center" required />
+                        <div class="invalid-feedback">Add order date</div>
+                    </div>
+                    <div class="col-md-4 col-lg-4 py-1">
+                        <input type="date" 
+                         formControlName="REQUIRED_DATE" min="{{ dayToday | date: 'yyyy-MM-dd' }}"
+                         class="form-control text-center" required />
+                        <div class="invalid-feedback">Add required date</div>
+                    </div>
+                    <div class="col-md-4 col-lg-4 py-1">
+                        <input type="date" 
+                         formControlName="SHIPPED_DATE" min="{{ dayToday | date: 'yyyy-MM-dd' }}"
+                         class="form-control text-center" required />
+                        <div class="invalid-feedback">Add shipped date</div>
+                    </div>
+                    <div class="col-md-12 col-lg-12 py-1">
+                        <input type="text" formControlName='FREIGHT' placeholder="$ Freight" minlength="1"
+                            maxlength="10" class="form-control" required (keypress)="characters($event, 3)"
+                            oninput="this.value = this.value.toUpperCase()"
+                            [class.is-invalid]='g.FREIGHT.errors && g.FREIGHT.touched && g.FREIGHT.invalid'>
+                        <div class="invalid-feedback" *ngIf='g.FREIGHT.errors && g.FREIGHT.touched'>
+                            <div *ngIf="g.FREIGHT.hasError('required')">
+                               Add Freight
+                            </div>
+                            <div *ngIf="g.FREIGHT.hasError('minlength')">
+                                Min 2 characters
+                            </div>
+                            <div *ngIf="g.FREIGHT.hasError('maxlength')">
+                                Max 50 characters
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-start">
+                    <h4 class="modal-title" id="modal_company_Label">Order Details</h4>
+                    </div>
+                    <div class="col-md-12 col-lg-12 py-1">
+                        <select formControlName="ID_PRODUCT" class="form-select" required (change)="selectPrice($event)"> 
+                            <option selected disabled value="">PRODUCT</option>
+                            <option *ngFor="let item of listProduct" value="{{item.productid}}">
+                                {{item.productname}}
+                            </option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Select Product
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-4 py-1">
+                        <input type="text" formControlName='UNITPRICE' placeholder="$ Unit Price" minlength="1"
+                            maxlength="10" class="form-control" required (keypress)="characters($event, 3)"
+                            oninput="this.value = this.value.toUpperCase()" [readonly]="true"
+                            [class.is-invalid]='g.UNITPRICE.errors && g.UNITPRICE.touched && g.UNITPRICE.invalid'>
+                        <div class="invalid-feedback" *ngIf='g.UNITPRICE.errors && g.UNITPRICE.touched'>
+                            <div *ngIf="g.UNITPRICE.hasError('required')">
+                               Add unitprice
+                            </div>
+                            <div *ngIf="g.UNITPRICE.hasError('minlength')">
+                                Min 2 characters
+                            </div>
+                            <div *ngIf="g.UNITPRICE.hasError('maxlength')">
+                                Max 50 characters
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-4 py-1">
+                        <input type="text" formControlName='QUANTITY' placeholder="quantity" minlength="1"
+                            maxlength="10" class="form-control" required (keypress)="characters($event, 3)"
+                            oninput="this.value = this.value.toUpperCase()" 
+                            [class.is-invalid]='g.QUANTITY.errors && g.QUANTITY.touched && g.QUANTITY.invalid'>
+                        <div class="invalid-feedback" *ngIf='g.QUANTITY.errors && g.QUANTITY.touched'>
+                            <div *ngIf="g.QUANTITY.hasError('required')">
+                               Add quantity
+                            </div>
+                            <div *ngIf="g.QUANTITY.hasError('minlength')">
+                                Min 2 characters
+                            </div>
+                            <div *ngIf="g.QUANTITY.hasError('maxlength')">
+                                Max 50 characters
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-4 py-1">
+                        <input type="text" formControlName='DISCOUNT' placeholder=" discount" minlength="1"
+                            maxlength="10" class="form-control" required (keypress)="characters($event, 3)"
+                            oninput="this.value = this.value.toUpperCase()"  
+                            [class.is-invalid]='g.DISCOUNT.errors && g.DISCOUNT.touched && g.DISCOUNT.invalid'>
+                        <div class="invalid-feedback" *ngIf='g.DISCOUNT.errors && g.DISCOUNT.touched'>
+                            <div *ngIf="g.DISCOUNT.hasError('required')">
+                               Add unitprice
+                            </div>
+                            <div *ngIf="g.DISCOUNT.hasError('minlength')">
+                                Min 2 characters
+                            </div>
+                            <div *ngIf="g.DISCOUNT.hasError('maxlength')">
+                                Max 50 characters
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12" style="margin:0%;">
+                        <div class="d-flex justify-content-end">
+                  
+                            <button type="button" id="btnClose2"  data-bs-dismiss="modal" aria-label="Close"class="btn btn-danger"  (click)="clearControlReset()" style="margin:3%;"> CLOSE </button>
+                            <button type="submit" id="btnSendCompany" class="btn btn-success" style="margin:3%;"> SAVE </button>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

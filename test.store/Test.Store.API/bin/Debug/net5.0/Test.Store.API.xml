@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Test.Store.API</name>
+    </assembly>
+    <members>
+        <member name="M:Test.Store.API.Controllers.AuthorizationController.#ctor(Test.Store.BL.ManagementToken_I,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            AuthorizationController
+            </summary>
+            <param name="_managementToken"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:Test.Store.API.Controllers.AuthorizationController.generateToken">
+            <summary>
+            generateToken
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Test.Store.API.Controllers.CustomersController.#ctor(Test.Store.BL.Customers_I)">
+            <summary>
+            ProductController
+            </summary>
+            <param name="objInterface"></param>
+        </member>
+        <member name="M:Test.Store.API.Controllers.CustomersController.getCustomers">
+            <summary>
+            getProducts
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Test.Store.API.Controllers.EmployeesController.#ctor(Test.Store.BL.Employees_I)">
+            <summary>
+            EmployeesController
+            </summary>
+            <param name="objInterface"></param>
+        </member>
+        <member name="M:Test.Store.API.Controllers.EmployeesController.getEmployees">
+            <summary>
+            getEmployees
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Test.Store.API.Controllers.OrdersController.#ctor(Test.Store.BL.Orders_I)">
+            <summary>
+            OrdersController
+            </summary>
+            <param name="objInterface"></param>
+        </member>
+        <member name="M:Test.Store.API.Controllers.OrdersController.getOrdersCodOrder(System.Int32)">
+            <summary>
+            getOrdersCodOrder
+            </summary>
+            <param name="codOrder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Test.Store.API.Controllers.OrdersController.postOrder(Test.Store.Entities.Order)">
+            <summary>
+            postOrder
+            </summary>
+            <param name="order"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Test.Store.API.Controllers.ProductsController.#ctor(Test.Store.BL.Products_I)">
+            <summary>
+            ProductsController
+            </summary>
+            <param name="objInterface"></param>
+        </member>
+        <member name="M:Test.Store.API.Controllers.ProductsController.getProducts">
+            <summary>
+            getProducts
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Test.Store.API.Controllers.ShippersController.#ctor(Test.Store.BL.Shippers_I)">
+            <summary>
+            ShippersController
+            </summary>
+            <param name="objInterface"></param>
+        </member>
+        <member name="M:Test.Store.API.Controllers.ShippersController.getShippers">
+            <summary>
+            getShippers
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
